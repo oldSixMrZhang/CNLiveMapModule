@@ -1,0 +1,16 @@
+#use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
+source 'http://bj.gitlab.cnlive.com/ios-team/CNLiveRepos.git'
+platform :ios, '9.0'
+
+target 'CNLiveMapModule_Example' do
+  pod 'CNLiveMapModule', :path => '../'
+  #依赖三方私有库,如果里面有.a的时候加上这个
+  pre_install do |installer| Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+  end
+  target 'CNLiveMapModule_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
